@@ -5,6 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Hero = (function () {
     function Hero() {
@@ -28,15 +29,17 @@ var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Tour of Heroes';
         this.heroes = HEROES;
-        this.myHero = HEROES[0];
     }
+    AppComponent.prototype.onSelect = function (hero) {
+        this.selectedHero = hero;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>{{title}}</h1>\n  <h2>My Heroes</h2>\n  <ul class=\"heroes\">\n  <li *ngFor=\"let hero of heroes\">\n    <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n  </li>\n  </ul>\n  <h2>{{myHero.name}} details!</h2>\n  <div>\n  </div>\n  ",
-        styleUrls: ['app/app.component.css']
+        templateUrl: 'app/views/templates/app.component.html',
+        styleUrls: ['app/views/styles/app.component.css']
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

@@ -20,23 +20,16 @@ const HEROES: Hero[] = [
 
 @Component({
   selector: 'my-app',
-  template: `
-  <h1>{{title}}</h1>
-  <h2>My Heroes</h2>
-  <ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
-  </li>
-  </ul>
-  <h2>{{myHero.name}} details!</h2>
-  <div>
-  </div>
-  `,
-  styleUrls: ['app/app.component.css']
+  templateUrl: 'app/views/templates/app.component.html',
+  styleUrls: ['app/views/styles/app.component.css']
 })
 
 export class AppComponent  {
   title = 'Tour of Heroes';
   heroes = HEROES;
-  myHero = HEROES[0];
+  selectedHero: Hero;
+
+  onSelect(hero: Hero) {
+    this.selectedHero = hero;
+  }
 }
