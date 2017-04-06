@@ -6,27 +6,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var forms_1 = require("@angular/forms");
-var app_component_1 = require("./components/app.component");
+var router_1 = require("@angular/router");
 var heroes_component_1 = require("./components/heroes.component");
 var hero_detail_component_1 = require("./components/hero-detail.component");
 var dashboard_component_1 = require("./components/dashboard.component");
-var hero_service_1 = require("./services/hero.service");
-// Routes
-var app_routing_module_1 = require("./app-routing.module");
-var AppModule = (function () {
-    function AppModule() {
+var APP_ROUTES = [
+    {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+    },
+    {
+        path: 'heroes',
+        component: heroes_component_1.HeroesComponent
+    },
+    {
+        path: 'dashboard',
+        component: dashboard_component_1.DashboardComponent
+    },
+    {
+        path: 'detail/:id',
+        component: hero_detail_component_1.HeroDetailComponent
     }
-    return AppModule;
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
+    }
+    return AppRoutingModule;
 }());
-AppModule = __decorate([
+AppRoutingModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule],
-        declarations: [app_component_1.AppComponent, hero_detail_component_1.HeroDetailComponent, heroes_component_1.HeroesComponent, dashboard_component_1.DashboardComponent],
-        bootstrap: [app_component_1.AppComponent],
-        providers: [hero_service_1.HeroService]
+        imports: [router_1.RouterModule.forRoot(APP_ROUTES)],
+        exports: [router_1.RouterModule]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], AppRoutingModule);
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=app-routing.module.js.map
